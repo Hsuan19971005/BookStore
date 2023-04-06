@@ -1,0 +1,23 @@
+<h1 class="text-h1">User sign up</h1>
+<% if @user.errors %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li class="text-rose-500"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model: @user) do |f| %>
+  <div class="field m-2 flex">
+    <%= f.label :email, "Email" , class: "w-40 text-right mr-1"%>
+    <%= f.email_field :email , class: "h-7"%>
+  </div>
+  <div class="field m-2 flex">
+    <%= f.label :password, "Password" , class: "w-40 text-right mr-1"%>
+    <%= f.password_field :password , class: "h-7"%>
+  </div>
+  <div class="field m-2 flex">
+    <%= f.label :password, "Password confirm" , class: "w-40 text-right mr-1"%>
+    <%= f.password_field :password_confirmation , class: "h-7"%>
+  </div>
+  <%= f.submit class: "btn m-2" %>
+<% end %>
