@@ -1,0 +1,17 @@
+<h1>Show book</h1>
+<hr>
+<table>
+  <thead>
+    <th>書名</th>
+    <th>作者</th>
+    <th>價錢</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @book.name %></td>
+      <td><%= @book.author %></td>
+      <td><%= @book.price %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "Go home", books_path %>

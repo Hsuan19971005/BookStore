@@ -1,0 +1,22 @@
+<% if book.errors %>
+  <ul>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for (book) do |f| %>
+  <div class="field">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :author, "Author" %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :price, "Price" %>
+    <%= f.number_field :price %>
+  </div>
+  <%= f.submit %>
+<% end %>
