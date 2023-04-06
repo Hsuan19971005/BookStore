@@ -1,17 +1,17 @@
-<h1>Show book</h1>
-<hr>
-<table>
-  <thead>
-    <th>書名</th>
-    <th>作者</th>
-    <th>價錢</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @book.name %></td>
-      <td><%= @book.author %></td>
-      <td><%= @book.price %></td>
-    </tr>
-  </tbody>
-</table>
-<%= link_to "Go home", books_path %>
+<div class="grid grid-cols-12">
+  <section class="col-span-8 flex justify-center bg-slate-300 ">
+    <div class="card bg-indigo-400 p-4 w-96 " >
+      <div class="bg-rose-400">
+        <img src="https://picsum.photos/300/200/?random=10" class="w-full">
+      </div>
+      <h1 class="text-2xl font-bold m-1"><%= @book.name %></h1>
+      <p>
+        <%= @book.author %>
+        <%= @book.price %>
+      </p>
+    </div>
+  </section>
+  <aside class=" col-span-4 bg-slate-400">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum mollitia optio, tempora eum neque dolorem vitae quo earum quia veritatis accusantium voluptatem minima recusandae voluptate! Asperiores pariatur soluta nihil ut.</p>
+  </aside>
+</div>
