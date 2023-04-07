@@ -1,0 +1,12 @@
+<h1 class="text-h1">Sign in</h1>
+<%= form_with(model:@user, url: sessions_path) do |f| %>
+  <div class="field m-2 flex">
+    <%= f.label :email, "Email" ,class: "w-40 text-right mr-1"%>
+    <%= f.email_field :email , class: "h-7"%>
+  </div>
+  <div class="field m-2 flex">
+    <%= f.label :password, "Password" ,class: "w-40 text-right mr-1"%>
+    <%= f.password_field :password , class: "h-7"%>
+  </div>
+  <%= f.submit "Sign in" ,class: "btn m-2"  %>
+<% end %>

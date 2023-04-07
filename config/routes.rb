@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     get "sign_up", action: "new"
     get "sign_in"
   end
+  resource :sessions, only: [:create, :destroy]
 end
