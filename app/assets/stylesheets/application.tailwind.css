@@ -6,18 +6,18 @@
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply px-4 py-2 bg-blue-200;
   }
 }
 
 */
-
-.text-h1{
+.text-h1 {
   @apply text-2xl font-bold;
 }
-.btn{
-  @apply bg-sky-500 rounded-md py-1 px-2 shadow-sm hover:bg-sky-800 cursor-pointer;
+.btn {
+  @apply px-2 py-1 rounded-md shadow-sm cursor-pointer bg-sky-600 hover:bg-sky-800;
 }
+
 .field_with_errors {
   @apply inline;
 }

@@ -1,17 +1,23 @@
 <div class="grid grid-cols-12">
-  <section class="col-span-8 flex justify-center bg-slate-300 ">
-    <div class="card bg-indigo-400 p-4 w-96 " >
+  <section class="flex justify-center col-span-8 bg-slate-300 ">
+    <div class="bg-slate-900 card w-96" >
       <div class="bg-rose-400">
-        <img src="https://picsum.photos/80/200/?random=10" class="w-full">
+        <img src="https://picsum.photos/800/500/?random=10" class="w-full">
       </div>
-      <h1 class="text-2xl font-bold m-1"><%= @book.name %></h1>
-      <p>
-        <%= @book.author %>
-        <%= @book.price %>
-      </p>
+      <article class="p-2">
+        <h1 class="m-1 text-2xl font-bold text-slate-50"><%= @book.name %></h1>
+        <p class="text-slate-50">
+          <%= @book.author %>
+          $ <%= @book.price %>
+        </p>
+      </article>
     </div>
   </section>
-  <aside class=" col-span-4 bg-slate-400">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum mollitia optio, tempora eum neque dolorem vitae quo earum quia veritatis accusantium voluptatem minima recusandae voluptate! Asperiores pariatur soluta nihil ut.</p>
+  <aside class="col-span-4 p-1 bg-slate-400">
+    <h2 class="text-h1">Comments</h2>
+    <%= form_with(model: @comment) do |f| %>
+      <%= f.text_area :content, class:"w-full rounded", rows: 3%>
+      <%= f.submit value:"Leave comment" , class: "btn text-white"%>
+    <% end %>
   </aside>
 </div>
