@@ -9,14 +9,12 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    return User.find_by(id: session[:_user_]) if user_log_in?
+    return @__user__ ||= User.find_by(id: session[:_user_]) if user_log_in?
     return nil
   end
 
   def authenticate_user!
-    if not user_log_in?
-      redirect_to root_path, notice:"Please sign in"
-    end
+    redirect_to root_path, notice:"Please sign in" if not user_log_in?
   end
   def id_not_found
     render file:Rails.root.join('public','404.html'), layout:false, status:404 and return
