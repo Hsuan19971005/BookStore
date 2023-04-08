@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book_id, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @books = Book.all
     if params[:keyword].present?
