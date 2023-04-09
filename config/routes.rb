@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     get "sign_in"
   end
   resource :sessions, only: [:create, :destroy]
+
+  resources :books do
+    resources :comments, shallow: true, only: [:create, :update, :edit, :destroy]
+  end
 end

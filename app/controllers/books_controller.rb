@@ -22,6 +22,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @book.comments.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def edit

@@ -15,9 +15,20 @@
   </section>
   <aside class="col-span-4 p-1 bg-slate-400">
     <h2 class="text-h1">Comments</h2>
-    <%= form_with(model: @comment) do |f| %>
-      <%= f.text_area :content, class:"w-full rounded", rows: 3%>
-      <%= f.submit value:"Leave comment" , class: "btn text-white"%>
+    <%# 錯誤訊息 %>
+    <% if @comment.errors.present? %>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li class="text-red-600"><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
+    <%# 留下評論 %>
+    <%= form_with(model: @comment, url: book_comments_path(@book)) do |f| %>
+      <%= f.text_area :content, class:"w-full rounded", rows: 3%>
+      <%= f.submit value:"Leave a comment" , class: "btn text-white"%>
+    <% end %>
+    <%# 顯示當前使用者所有的評論 %>
+    <%= render partial:'comments/comment', collection: @comments %>
   </aside>
 </div>

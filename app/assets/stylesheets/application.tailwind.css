@@ -15,7 +15,13 @@
   @apply text-2xl font-bold;
 }
 .btn {
-  @apply px-2 py-1 rounded-md shadow-sm cursor-pointer bg-sky-600 hover:bg-sky-800;
+  @apply px-2 py-1 m-1 rounded-md shadow-sm cursor-pointer bg-sky-600 hover:bg-sky-800;
+}
+.btn-ok{
+  @apply px-2 py-1 m-1 rounded-md shadow-sm cursor-pointer bg-lime-600 hover:bg-lime-700;
+}
+.btn-danger{
+  @apply px-2 py-1 m-1 bg-pink-600 rounded-md shadow-sm cursor-pointer hover:bg-pink-700;
 }
 
 .field_with_errors {
