@@ -1,6 +1,6 @@
 <div class="grid grid-cols-12">
   <section class="flex justify-center col-span-8 bg-slate-300 ">
-    <div class="bg-slate-900 card w-96" >
+    <div class="mt-10 shadow-xl bg-slate-900 card w-96 h-96" >
       <div class="bg-rose-400">
         <img src="https://picsum.photos/800/500/?random=10" class="w-full">
       </div>
@@ -24,11 +24,11 @@
       </ul>
     <% end %>
     <%# 留下評論 %>
-    <%= form_with(model: @comment, url: book_comments_path(@book)) do |f| %>
+    <%= form_with(model: @comment, url: book_comments_path(@book), local: false) do |f| %>
       <%= f.text_area :content, class:"w-full rounded", rows: 3%>
       <%= f.submit value:"Leave a comment" , class: "btn text-white"%>
     <% end %>
     <%# 顯示當前使用者所有的評論 %>
-    <%= render partial:'comments/comment', collection: @comments %>
+    <div class="comment-list"><%= render partial:'comments/comment', collection: @comments %></div>
   </aside>
 </div>

@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to book_path(@book.id), notice: "New comment!"
+      # redirect_to book_path(@book.id), notice: "New comment!"
+      # create.js.erb
     else
       @comments = @book.comments.where(user_id: current_user.id).order(created_at: :desc)
       render 'books/show'

@@ -1,3 +1,4 @@
+<% comment_user_email = comment.user.email %>
 <article class="p-1 m-1 rounded shadow-lg bg-slate-300">
   <p class="text-black ">
     <%= comment.content %>
@@ -5,8 +6,13 @@
   <div class="mb-1 text-black">
     <%= comment.updated_at %>
   </div>
+  <div class="mb-1 font-bold text-black">
+    from: <%= comment_user_email %>
+  </div>
   <footer>
-    <%= link_to "Edit" ,"#", class: "text-black btn-ok"%>
-    <%= link_to "Delete", comment_path(comment.id), method: 'delete', data:{confirm: "Are you sure?"} , class: "text-black btn-danger"%>
+    <% if current_user.email == comment_user_email %>
+      <%= link_to "Edit" ,"#", class: "text-black btn-ok"%>
+      <%= link_to "Delete", comment_path(comment.id), method: 'delete', data:{confirm: "Are you sure?"} , class: "text-black btn-danger"%>
+    <% end %>
   </footer>
 </article>
