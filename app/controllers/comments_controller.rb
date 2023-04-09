@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_book, only: [:create]
+  before_action :find_comment, only: [:destroy, :edit, :update]
   def create
     @comment = Comment.new(comment_params)
     @comment.book_id = @book.id
@@ -14,6 +15,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to book_path(@comment.book_id), notice: "New comment!"
+  end
+
+
   private
   def comment_params
     params.require(:comment).permit(:content)
@@ -21,5 +28,9 @@ class CommentsController < ApplicationController
 
   def find_book
     @book = Book.find(params[:book_id])
+  end
+
+  def find_comment
+    @comment = current_user.comments.find(params[:id])
   end
 end
