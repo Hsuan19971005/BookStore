@@ -24,9 +24,9 @@
       </ul>
     <% end %>
     <%# 留下評論 %>
-    <%= form_with(model: @comment, url: book_comments_path(@book), local: false) do |f| %>
-      <%= f.text_area :content, class:"w-full rounded", rows: 3%>
-      <%= f.submit value:"Leave a comment" , class: "btn text-white"%>
+    <%= form_with(model: @comment, url: book_comments_path(@book), local: false, data: {controller: 'comment-form'}) do |f| %>
+      <%= f.text_area :content, class:"w-full rounded", rows: 3, data: {action: 'input->comment-form#input'}%>
+      <%= f.submit value:"Leave a comment" , class: "btn text-white", data:{comment_form_target: 'button'}%>
     <% end %>
     <%# 顯示當前使用者所有的評論 %>
     <div class="comment-list"><%= render partial:'comments/comment', collection: @comments %></div>
