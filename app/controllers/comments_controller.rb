@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.book_id = @book.id
     @comment.user_id = current_user.id
-
+    
     if @comment.save
       # redirect_to book_path(@book.id), notice: "New comment!"
       # create.js.erb
