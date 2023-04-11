@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_book_id, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   def index
     @books = Book.all
     if params[:keyword].present?
@@ -44,11 +45,12 @@ class BooksController < ApplicationController
   end
 
   private
+
   def book_param
-    params.require(:book).permit(:name, :author, :price)
+    params.require(:book).permit(:name, :author, :price, :slug)
   end
 
   def find_book_id
-    @book = Book.find_by!(id: params[:id])
+    @book = Book.friendly.find(params[:id])
   end
 end

@@ -23,9 +23,9 @@
         <td class="px-2 py-1 border-2 border-solid"><%= book.name %></td>
         <td class="px-2 py-1 border-2 border-solid"><%= book.author %></td>
         <td class="px-2 py-1 border-2 border-solid"><%= book.price %></td>
-        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Show", book_path(book.id) %></td>
-        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Edit", edit_book_path(book.id) %></td>
-        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Delete", book_path(book.id), method: 'delete' %></td>
+        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Show", book_path(book.slug) %></td>
+        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Edit", edit_book_path(book.slug) %></td>
+        <td class="px-2 py-1 text-indigo-700 border-2 border-solid"><%= link_to "Delete", book_path(book.slug), method: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>
