@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_log_in?, :current_user
 
   private
-  def user_log_in?
+  def user_log_in? 
     session[:_user_].present?
   end
   
