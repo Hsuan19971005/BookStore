@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_11_012137) do
+ActiveRecord::Schema.define(version: 2023_04_16_134046) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2023_04_11_012137) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "favorite_books", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_favorite_books_on_book_id"
+    t.index ["user_id"], name: "index_favorite_books_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -56,4 +65,6 @@ ActiveRecord::Schema.define(version: 2023_04_11_012137) do
 
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorite_books", "books"
+  add_foreign_key "favorite_books", "users"
 end
