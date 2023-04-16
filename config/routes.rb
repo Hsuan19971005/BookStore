@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :sessions, only: [:create, :destroy]
 
   resources :books do
+    member {post :like}
     resources :comments, shallow: true, only: [:create, :update, :edit, :destroy]
   end
 end

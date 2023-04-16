@@ -17,6 +17,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem "paranoia", "~> 2.6"
 gem "hotwire-rails", "~> 0.1.3"
 gem "friendly_id", "~> 5.5"
+gem "requestjs-rails", "~> 0.0.10"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -37,6 +38,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   gem 'webdrivers'
 end
+
 
 
 

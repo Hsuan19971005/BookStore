@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :find_book_id, only: [:show, :edit, :update, :destroy]
+  before_action :find_book_id, only: [:show, :edit, :update, :destroy, :like]
   before_action :authenticate_user!
 
   def index
@@ -42,6 +42,10 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to books_path, notice: "Delet book successfully"
+  end
+
+  def like
+    render json:{id: params[:id], status: "liked"}
   end
 
   private
