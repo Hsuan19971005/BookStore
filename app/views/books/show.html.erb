@@ -10,7 +10,9 @@
           <%= @book.author %>
           $ <%= @book.price %>
         </p>
-        <button data-controller="favorite"><i class="text-white fa-regular fa-thumbs-up " data-favorite-target="icon"></i></button>
+        <button data-controller="favorite" data-id="<%= @book.id%>" data-liked="<%= current_user.like?(@book)%>">
+          <i class="text-white fa-regular fa-thumbs-up " data-favorite-target="icon"></i>
+        </button>
       </article>
     </div>
   </section>

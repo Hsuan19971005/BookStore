@@ -7,6 +7,8 @@ class Book < ApplicationRecord
   validates :name, presence: true
 
   has_many :comments
+
+  has_many :favorite_books
   has_many :users, through: :favorite_books
 
   # scope :lower_price_books, ->(x){where("price < #{x}")}

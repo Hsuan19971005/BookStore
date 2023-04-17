@@ -3,32 +3,43 @@ import {get, post, put, patch, destroy} from "@rails/request.js";
 
 export default class extends Controller {
   static targets = ["icon"];
-  initialize() {
-    this.isLike = false;
-    this.resume = undefined;
-  }
   connect() {
     this.element.setAttribute("data-action", "click->favorite#like");
+    const {id, liked} = this.element.dataset;
+    this.isLike = liked == "true" ? true : false;
+    this.bookID = id;
+    this.updateIcon();
   }
-  like() {
-    let url = "/resumes/${this.resumeId}/like";
-    post(url, {body: JSON.stringify({name: "hello!!!"})}).then((resp) => {
-      console.log(resp);
-    });
-    // const response = await post('localhost:3000/my_endpoint', )
-    // if (response.ok) {
-    // }
-
+  updateIcon() {
     if (this.isLike == false) {
-      this.iconTarget.classList.remove("fa-regular");
-      this.iconTarget.classList.add("fa-solid");
-      this.isLike = true;
-      // 打API
-    } else {
       this.iconTarget.classList.remove("fa-solid");
       this.iconTarget.classList.add("fa-regular");
-      this.isLike = false;
-      // 打API
+    } else {
+      this.iconTarget.classList.remove("fa-regular");
+      this.iconTarget.classList.add("fa-solid");
     }
+  }
+  async like() {
+    this.isLike = !this.isLike;
+    this.updateIcon();
+    // 打API
+    // let url = `api/v1/books/${this.bookID}/like`;
+    let url = `/books/${this.bookID}/like`;
+    const resp = await post(url, {
+      body: JSON.stringify({name: "hello!!!"}),
+    });
+    if (resp.ok) {
+      console.log(resp);
+    } else {
+      console.log("no return!");
+    }
+
+    // post(url, {body: JSON.stringify({name: "hello!!!"})}).then((resp) => {
+    //   if (resp.ok) {
+    //     console.log(resp);
+    //   } else {
+    //     console.log("no return!");
+    //   }
+    // });
   }
 }

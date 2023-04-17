@@ -45,7 +45,14 @@ class BooksController < ApplicationController
   end
 
   def like
-    render json:{id: params[:id], status: "liked"}
+    liked = current_user.like?(@book)
+    if liked
+      current_user.liked_books.destroy(@book)
+      render json:{id: params[:id], status: "dislike"}
+    else
+      current_user.liked_books << @book
+      render json:{id: params[:id], status: "like"}
+    end
   end
 
   private
