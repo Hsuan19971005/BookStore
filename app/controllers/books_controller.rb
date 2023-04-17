@@ -44,16 +44,16 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: "Delet book successfully"
   end
 
-  def like
-    liked = current_user.like?(@book)
-    if liked
-      current_user.liked_books.destroy(@book)
-      render json:{id: params[:id], status: "dislike"}
-    else
-      current_user.liked_books << @book
-      render json:{id: params[:id], status: "like"}
-    end
-  end
+  # def like
+  #   liked = current_user.like?(@book)
+  #   if liked
+  #     current_user.liked_books.destroy(@book)
+  #     render json:{id: params[:id], status: "dislike"}
+  #   else
+  #     current_user.liked_books << @book
+  #     render json:{id: params[:id], status: "like"}
+  #   end
+  # end
 
   private
 

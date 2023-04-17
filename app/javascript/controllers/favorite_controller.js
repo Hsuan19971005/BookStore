@@ -23,8 +23,7 @@ export default class extends Controller {
     this.isLike = !this.isLike;
     this.updateIcon();
     // 打API
-    // let url = `api/v1/books/${this.bookID}/like`;
-    let url = `/books/${this.bookID}/like`;
+    let url = `/api/v1/books/${this.bookID}/like`;
     const resp = await post(url, {
       body: JSON.stringify({name: "hello!!!"}),
     });
@@ -33,13 +32,5 @@ export default class extends Controller {
     } else {
       console.log("no return!");
     }
-
-    // post(url, {body: JSON.stringify({name: "hello!!!"})}).then((resp) => {
-    //   if (resp.ok) {
-    //     console.log(resp);
-    //   } else {
-    //     console.log("no return!");
-    //   }
-    // });
   }
 }
